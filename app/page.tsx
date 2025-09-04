@@ -96,13 +96,13 @@ export default function HomePage() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Link href="/about">
+                <Link href="/contact">
                   <Button
                     size="lg"
                     variant="outline"
                     className="w-full sm:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
                   >
-                    Learn More
+                    Contact Us
                   </Button>
                 </Link>
               </div>

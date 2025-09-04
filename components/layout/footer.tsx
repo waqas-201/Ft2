@@ -35,8 +35,8 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-slate-400 hover:text-white transition-colors">
-                  About Us
+                <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
               <li>
@@ -50,8 +50,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-slate-400 hover:text-white transition-colors">
-                  Paint Guide
+                <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">
+                  Support
                 </Link>
               </li>
             </ul>

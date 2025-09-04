@@ -51,7 +51,7 @@ export default function OrderDetailPage() {
     if (foundOrder) {
       setOrder(foundOrder)
     } else {
-      router.push("/account?tab=orders")
+      router.push("/")
     }
   }, [params.id, getOrder, router])
 
@@ -89,10 +89,6 @@ export default function OrderDetailPage() {
           <Link href="/" className="hover:text-foreground">
             Home
           </Link>{" "}
-          /{" "}
-          <Link href="/account?tab=orders" className="hover:text-foreground">
-            Orders
-          </Link>{" "}
           / <span className="text-foreground">Order {order.id}</span>
         </nav>
 
@@ -100,10 +96,10 @@ export default function OrderDetailPage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <Link href="/account?tab=orders">
+              <Link href="/">
                 <Button variant="outline" size="sm" className="mb-4 bg-transparent">
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Orders
+                  Back to Home
                 </Button>
               </Link>
               <h1 className="text-3xl font-bold">Order {order.id}</h1>
@@ -374,6 +370,24 @@ export default function OrderDetailPage() {
                   </CardContent>
                 </Card>
               )}
+
+              {/* Contact Support */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Need Help?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Have questions about your order? Our support team is here to help.
+                  </p>
+                  <Link href="/contact">
+                    <Button variant="outline" className="w-full">
+                      <Mail className="w-4 h-4 mr-2" />
+                      Contact Support
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

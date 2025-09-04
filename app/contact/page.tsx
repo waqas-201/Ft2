@@ -116,6 +116,7 @@ export default function ContactPage() {
                       <h3 className="font-semibold">Phone</h3>
                       <p className="text-muted-foreground">+92 21 1234 5678</p>
                       <p className="text-muted-foreground">+92 300 1234 567</p>
+                      <p className="text-sm text-muted-foreground mt-1">For order tracking and support</p>
                     </div>
                   </div>
 

@@ -2,18 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Search, Menu, X, User, LogOut } from "lucide-react"
+import { Search, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { CartDrawer } from "@/components/cart/cart-drawer"
-import { useAuth } from "@/lib/auth-context"
 
 const categories = [
   { name: "Interior Paints", href: "/products?category=interior" },
@@ -23,13 +15,8 @@ const categories = [
 ]
 
 export function Header() {
-  const { state, logout } = useAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
-
-  const handleLogout = () => {
-    logout()
-  }
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b">
@@ -59,36 +46,6 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-4">
-            {state.isAuthenticated && state.user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="hidden md:flex">
-                    <User className="w-4 h-4 mr-2" />
-                    {state.user.name}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem asChild>
-                    <Link href="/account">My Account</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/account?tab=orders">My Orders</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link href="/login">
-                <Button variant="ghost" size="sm" className="hidden md:flex">
-                  <User className="w-4 h-4 mr-2" />
-                  Sign In
-                </Button>
-              </Link>
-            )}
 
             <CartDrawer />
 
@@ -112,9 +69,6 @@ export function Header() {
               {category.name}
             </Link>
           ))}
-          <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
-            About
-          </Link>
           <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
             Contact
           </Link>
@@ -157,13 +111,6 @@ export function Header() {
                 </Link>
               ))}
               <Link
-                href="/about"
-                className="block py-2 text-sm font-medium hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
                 href="/contact"
                 className="block py-2 text-sm font-medium hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
@@ -171,38 +118,13 @@ export function Header() {
                 Contact
               </Link>
               <div className="border-t pt-2 mt-2">
-                {state.isAuthenticated && state.user ? (
-                  <>
-                    <Link
-                      href="/account"
-                      className="block py-2 text-sm font-medium hover:text-primary transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      My Account
-                    </Link>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="w-full justify-start text-destructive hover:text-destructive"
-                      onClick={() => {
-                        handleLogout()
-                        setIsMenuOpen(false)
-                      }}
-                    >
-                      <LogOut className="w-4 h-4 mr-2" />
-                      Sign Out
-                    </Button>
-                  </>
-                ) : (
-                  <Link
-                    href="/login"
-                    className="block py-2 text-sm font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <User className="w-4 h-4 mr-2 inline" />
-                    Sign In
-                  </Link>
-                )}
+                <Link
+                  href="/contact"
+                  className="block py-2 text-sm font-medium hover:text-primary transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
               </div>
             </nav>
           </div>

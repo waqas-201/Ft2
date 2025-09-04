@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { CheckCircle, Package, Truck, Mail, ArrowRight, User } from "lucide-react"
+import { CheckCircle, Package, Truck, Mail, ArrowRight, Home } from "lucide-react"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
@@ -227,10 +227,10 @@ export default function CheckoutSuccessPage() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/account?tab=orders">
+            <Link href="/contact">
               <Button variant="outline" className="w-full sm:w-auto bg-transparent">
-                <User className="w-4 h-4 mr-2" />
-                Track Order
+                <Mail className="w-4 h-4 mr-2" />
+                Contact Support
               </Button>
             </Link>
             <Link href="/products">

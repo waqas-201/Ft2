@@ -5,7 +5,6 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { CartProvider } from "@/lib/cart-context"
-import { AuthProvider } from "@/lib/auth-context"
 import { OrderProvider } from "@/lib/order-context"
 import "./globals.css"
 
@@ -24,11 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-          <OrderProvider>
-            <CartProvider>
-              <Suspense fallback={null}>{children}</Suspense>
-            </CartProvider>
-          </OrderProvider>
+        <OrderProvider>
+          <CartProvider>
+            <Suspense fallback={null}>{children}</Suspense>
+          </CartProvider>
+        </OrderProvider>
         <Analytics />
       </body>
     </html>

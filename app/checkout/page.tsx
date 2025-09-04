@@ -14,7 +14,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Truck, CreditCard, MapPin, ArrowLeft, ArrowRight, ShoppingCart, CheckCircle, AlertCircle } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
-import { useAuth } from "@/lib/auth-context"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
@@ -43,7 +42,6 @@ interface PaymentInfo {
 export default function CheckoutPage() {
   const router = useRouter()
   const { state: cartState, getTotalItems, getTotalPrice, clearCart } = useCart()
-  const { state: authState } = useAuth()
 
   const [currentStep, setCurrentStep] = useState(1)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -82,24 +80,6 @@ export default function CheckoutPage() {
       router.push("/cart")
     }
   }, [cartState.items, router])
-
-  // Pre-fill user info if logged in
-  useEffect(() => {
-    if (authState.user) {
-      setShippingInfo((prev) => ({
-        ...prev,
-        firstName: authState.user?.name.split(" ")[0] || "",
-        lastName: authState.user?.name.split(" ").slice(1).join(" ") || "",
-        email: authState.user?.email || "",
-        phone: authState.user?.phone || "",
-        address: authState.user?.address?.street || "",
-        city: authState.user?.address?.city || "",
-        state: authState.user?.address?.state || "",
-        zipCode: authState.user?.address?.zipCode || "",
-        country: authState.user?.address?.country || "Pakistan",
-      }))
-    }
-  }, [authState.user])
 
   const validateStep = (step: number): boolean => {
     const newErrors: Record<string, string> = {}
